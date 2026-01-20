@@ -2,6 +2,7 @@ package com.yudi.beanengine.main;
 
 import com.yudi.beanengine.framework.ObjectId;
 import com.yudi.beanengine.inputs.KeyInput;
+import com.yudi.beanengine.objects.Block;
 import com.yudi.beanengine.objects.Player;
 
 import java.awt.*;
@@ -24,10 +25,16 @@ public class Game extends Canvas implements Runnable {
         // para podermos acessar o handler lá dentro
         this.addKeyListener(new KeyInput(handler));
 
-        new Window(800, 600, "Blue Engine V1", this);
+        new Window(800, 600, "Bean Engine", this);
 
         // Criando o Player
-        handler.addObject(new Player(100, 100, ObjectId.Player));
+        handler.addObject(new Player(100, 100, handler, ObjectId.Player));
+
+        for(int xx = 0; xx < 800; xx += 32) {
+            handler.addObject(new Block(xx, 500, ObjectId.Block));
+        }
+
+        handler.addObject(new Block(200, 300, ObjectId.Block));
     }
 
     public synchronized void start(){

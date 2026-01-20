@@ -16,6 +16,8 @@ public abstract class GameObject {
     public abstract void tick();
     public abstract void render(Graphics g);
 
+    public abstract Rectangle getBounds();
+
     // Getters e Setters
     public int getX() { return x; }
     public int getY() { return y; }
